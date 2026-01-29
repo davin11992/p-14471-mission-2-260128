@@ -1,9 +1,10 @@
 class Quote {
-    private int id;
+    private final int id;
     private String content;
     private String writer;
 
-    public Quote(String content, String writer) {
+    public Quote(int id, String content, String writer) {
+        this.id = id;
         this.content = content;
         this.writer = writer;
     }
@@ -18,10 +19,6 @@ class Quote {
 
     public String getWriter() {
         return writer;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void update(String content, String writer) {

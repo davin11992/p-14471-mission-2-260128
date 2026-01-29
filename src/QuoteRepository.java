@@ -4,9 +4,9 @@ class QuoteRepository {
     private int id = 0;
     private final ArrayList<Quote> quotes = new ArrayList<>();
 
-    public int save(Quote quote) {
+    public int save(String content, String writer) {
         id++;
-        quote.setId(id);
+        Quote quote = new Quote(id, content, writer);
         quotes.add(quote);
         return id;
     }
@@ -26,10 +26,10 @@ class QuoteRepository {
 
     public boolean deleteById(int id) {
         Quote quote = findById(id);
-        if (quote != null) {
-            quotes.remove(quote);
-            return true;
+        if (quote == null) {
+            return false;
         }
-        return false;
+        quotes.remove(quote);
+        return true;
     }
 }

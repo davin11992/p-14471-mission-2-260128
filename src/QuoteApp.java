@@ -49,8 +49,7 @@ class QuoteApp {
         System.out.print("작가 : ");
         String writer = scanner.nextLine();
 
-        Quote quote = new Quote(content, writer);
-        int id = repository.save(quote);
+        int id = repository.save(content, writer);
         System.out.println(id + "번 명언이 등록되었습니다.");
     }
 
@@ -69,9 +68,9 @@ class QuoteApp {
         int id = extractId(command, DELETE_PATTERN);
 
         if (repository.deleteById(id)) {
-            System.out.println(id + "번 명언은 존재하지 않습니다.");
-        } else {
             System.out.println(id + "번 명언이 삭제되었습니다.");
+        } else {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
         }
     }
 
