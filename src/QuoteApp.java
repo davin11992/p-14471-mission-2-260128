@@ -78,9 +78,7 @@ class QuoteApp {
         int id = extractId(command, UPDATE_PATTERN);
         Quote quote = repository.findById(id);
 
-        if (quote == null) {
-            System.out.println(id + "번 명언은 존재하지 않습니다.");
-        } else {
+        if (quote != null) {
             System.out.println("명언(기존) : " + quote.getContent());
             System.out.print("명언 : ");
             String newContent = scanner.nextLine();
@@ -90,6 +88,8 @@ class QuoteApp {
             String newWriter = scanner.nextLine();
 
             quote.update(newContent, newWriter);
+        } else {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
         }
     }
 

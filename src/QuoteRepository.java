@@ -26,10 +26,10 @@ class QuoteRepository {
 
     public boolean deleteById(int id) {
         Quote quote = findById(id);
-        if (quote == null) {
-            return false;
+        if (quote != null) {
+            quotes.remove(quote);
+            return true;
         }
-        quotes.remove(quote);
-        return true;
+        return false;
     }
 }
